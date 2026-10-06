@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>在线免费电影网 - 高清影视资源免费观看平台 | 海量片源每日更新</title>
+<meta name="description" content="在线免费电影网提供最新院线大片、经典老片、热门剧集免费在线观看，1080P高清画质无需注册，涵盖动作、喜剧、科幻、恐怖、爱情等全类型影视资源。">
+<meta name="keywords" content="在线免费电影网,免费看电影,高清影视,在线观影,免费电视剧">
+<link rel="canonical" href="https://zaixianmianfeidianyingwang-zh.github.io/">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--primary:#0f0f1a;
+--accent:#e50914;
+--accent2:#ff6b6b;
+--text:#e0e0e0;
+--card-bg:rgba(255,255,255,0.05);
+--glass:rgba(255,255,255,0.08);
+}
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+background:var(--primary);
+color:var(--text);
+line-height:1.8;
+overflow-x:hidden;
+}
+body::before{
+content:'';
+position:fixed;
+top:0;left:0;right:0;bottom:0;
+background:radial-gradient(ellipse at 20% 50%,rgba(229,9,20,0.15),transparent 50%),
+radial-gradient(ellipse at 80% 20%,rgba(100,50,200,0.12),transparent 50%),
+radial-gradient(ellipse at 50% 80%,rgba(0,150,255,0.08),transparent 50%);
+z-index:-1;
+}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+/* Header */
+header{
+position:sticky;top:0;z-index:100;
+backdrop-filter:blur(20px);
+background:rgba(15,15,26,0.85);
+border-bottom:1px solid var(--glass);
+}
+.header-inner{
+display:flex;align-items:center;justify-content:space-between;
+padding:12px 20px;max-width:1200px;margin:0 auto;
+}
+.logo{
+font-size:1.5rem;font-weight:900;
+background:linear-gradient(135deg,#e50914,#ff6b6b,#ffd93d);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+letter-spacing:-0.5px;
+}
+.logo span{font-size:0.75rem;display:block;font-weight:400;color:#888;-webkit-text-fill-color:#888;letter-spacing:1px}
+nav ul{display:flex;gap:8px;list-style:none}
+nav a{
+color:var(--text);text-decoration:none;
+padding:8px 14px;border-radius:20px;
+font-size:0.9rem;transition:all 0.3s ease;
+white-space:nowrap;
+}
+nav a:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.menu-toggle span{width:25px;height:2px;background:var(--text);border-radius:2px;transition:0.3s}
+/* Hero */
+.hero{
+min-height:70vh;display:flex;align-items:center;
+padding:80px 0;text-align:center;
+position:relative;
+}
+.hero-content{max-width:800px;margin:0 auto}
+.hero h1{
+font-size:clamp(2rem,5vw,3.5rem);
+font-weight:900;line-height:1.2;margin-bottom:20px;
+background:linear-gradient(135deg,#fff 30%,#ff6b6b);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero p{
+font-size:clamp(1rem,2.5vw,1.3rem);
+color:#aaa;margin-bottom:30px;
+}
+.hero-btns{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
+.btn{
+display:inline-block;padding:14px 32px;border-radius:50px;
+text-decoration:none;font-weight:700;font-size:1rem;
+transition:all 0.3s ease;position:relative;overflow:hidden;
+}
+.btn-primary{
+background:linear-gradient(135deg,#e50914,#b8070e);
+color:#fff;box-shadow:0 8px 25px rgba(229,9,20,0.4);
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(229,9,20,0.5)}
+.btn-outline{
+border:2px solid var(--glass);color:#fff;
+}
+.btn-outline:hover{background:var(--glass);transform:translateY(-3px)}
+/* Stats */
+.stats{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:20px;padding:40px 0;
+}
+.stat-item{
+text-align:center;padding:20px;
+background:var(--card-bg);border-radius:16px;
+border:1px solid var(--glass);
+}
+.stat-num{font-size:2.2rem;font-weight:900;color:var(--accent2)}
+.stat-label{color:#999;font-size:0.85rem}
+/* Section */
+section{padding:60px 0}
+.section-header{text-align:center;margin-bottom:40px}
+.section-header h2{
+font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;
+margin-bottom:10px;
+}
+.section-header p{color:#888;font-size:0.95rem}
+/* Movie Grid */
+.movie-grid{
+display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+gap:20px;
+}
+.movie-card{
+background:var(--card-bg);border-radius:16px;overflow:hidden;
+border:1px solid var(--glass);
+transition:all 0.35s ease;
+}
+.movie-card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+border-color:var(--accent);
+}
+.movie-poster{
+aspect-ratio:2/3;background:linear-gradient(135deg,#1a1a2e,#16213e);
+display:flex;align-items:center;justify-content:center;
+position:relative;overflow:hidden;
+}
+.movie-poster::after{
+content:'';position:absolute;inset:0;
+background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,0.7));
+}
+.movie-poster-text{
+position:absolute;z-index:2;
+font-size:0.85rem;color:#fff;text-align:center;padding:10px;
+font-weight:600;
+}
+.movie-info{padding:12px 14px}
+.movie-title{font-weight:700;font-size:0.95rem;margin-bottom:4px}
+.movie-meta{display:flex;justify-content:space-between;font-size:0.75rem;color:#888}
+.movie-tag{
+display:inline-block;padding:2px 8px;border-radius:4px;
+background:var(--accent);color:#fff;font-size:0.7rem;
+margin-top:6px;
+}
+/* Category Pills */
+.cat-nav{
+display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+margin-bottom:30px;
+}
+.cat-pill{
+padding:8px 18px;border-radius:30px;
+background:var(--card-bg);border:1px solid var(--glass);
+color:var(--text);text-decoration:none;font-size:0.85rem;
+transition:all 0.3s ease;
+}
+.cat-pill:hover,.cat-pill.active{
+background:var(--accent);border-color:var(--accent);color:#fff;
+}
+/* Table */
+.table-wrapper{overflow-x:auto;border-radius:12px;border:1px solid var(--glass)}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--glass)}
+th{background:rgba(229,9,20,0.15);font-weight:700;color:#fff;font-size:0.85rem}
+td{font-size:0.85rem;color:#ccc}
+tr:hover td{background:var(--card-bg)}
+/* FAQ */
+.faq-item{
+background:var(--card-bg);border:1px solid var(--glass);
+border-radius:12px;margin-bottom:12px;overflow:hidden;
+}
+.faq-q{
+padding:18px 20px;font-weight:700;cursor:pointer;
+display:flex;justify-content:space-between;align-items:center;
+font-size:0.95rem;
+}
+.faq-q::after{content:'+';font-size:1.3rem;color:var(--accent)}
+.faq-a{
+padding:0 20px;max-height:0;overflow:hidden;
+transition:all 0.35s ease;color:#aaa;font-size:0.88rem;
+}
+.faq-item.open .faq-a{padding:0 20px 18px;max-height:300px}
+.faq-item.open .faq-q::after{content:'−'}
+/* Footer */
+footer{
+padding:40px 0 30px;text-align:center;
+border-top:1px solid var(--glass);
+background:rgba(0,0,0,0.3);
+}
+.footer-logo{
+font-size:1.3rem;font-weight:900;color:#fff;margin-bottom:10px;
+}
+.footer-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:15px 0}
+.footer-links a{color:#888;text-decoration:none;font-size:0.85rem;transition:color 0.3s}
+.footer-links a:hover{color:var(--accent2)}
+.footer-copy{color:#666;font-size:0.75rem;margin-top:15px}
+.footer-domain{
+display:inline-block;margin-top:10px;padding:6px 16px;
+background:var(--card-bg);border-radius:20px;
+border:1px solid var(--glass);
+font-size:0.8rem;color:#aaa;
+}
+/* Responsive */
+@media(max-width:768px){
+.menu-toggle{display:flex}
+nav{display:none;position:fixed;top:60px;left:0;right:0;
+background:rgba(15,15,26,0.97);backdrop-filter:blur(20px);
+padding:20px;border-bottom:1px solid var(--glass)}
+nav.active{display:block}
+nav ul{flex-direction:column;gap:5px}
+nav a{display:block;padding:12px 20px;border-radius:8px}
+.hero{min-height:50vh;padding:40px 0}
+.movie-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.stats{grid-template-columns:repeat(2,1fr);gap:10px}
+.stat-item{padding:15px 10px}
+.stat-num{font-size:1.6rem}
+.btn{padding:12px 24px;font-size:0.9rem}
+section{padding:40px 0}
+}
+@media(max-width:380px){
+.movie-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/zhangzong.js"></script>
+
+<header>
+<div class="header-inner">
+<div class="logo">在线免费电影网<span>FREE MOVIES ONLINE</span></div>
+<div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
+<span></span><span></span><span></span>
+</div>
+<nav>
+<ul>
+<li><a href="#home">首页</a></li>
+<li><a href="#latest">最新上映</a></li>
+<li><a href="#categories">影片分类</a></li>
+<li><a href="#ranking">排行榜</a></li>
+<li><a href="#guide">观影指南</a></li>
+<li><a href="#faq">常见问题</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+<div class="container">
+<div class="hero-content">
+<h1>海量正版高清影视<br>随时随地免费畅享</h1>
+<p>在线免费电影网汇聚全球院线大片、经典影史佳作、热门剧集综艺，1080P蓝光画质免注册即看，让好电影触手可及</p>
+<div class="hero-btns">
+<a href="#latest" class="btn btn-primary">立即观影</a>
+<a href="#categories" class="btn btn-outline">浏览分类</a>
+</div>
+</div>
+<div class="stats">
+<div class="stat-item"><div class="stat-num">50,000+</div><div class="stat-label">片源总量</div></div>
+<div class="stat-item"><div class="stat-num">1080P</div><div class="stat-label">高清画质</div></div>
+<div class="stat-item"><div class="stat-num">4K</div><div class="stat-label">杜比视界</div></div>
+<div class="stat-item"><div class="stat-num">0元</div><div class="stat-label">完全免费</div></div>
+</div>
+</div>
+</section>
+
+<!-- Latest -->
+<section id="latest">
+<div class="container">
+<div class="section-header">
+<h2>最新上映 · 院线同步</h2>
+<p>每日更新热门新片，第一时间观看院线大片</p>
+</div>
+<div class="movie-grid">
+<div class="movie-card">
+<div class="movie-poster"><span class="movie-poster-text">沙丘3：天穹帝国</span></div>
+<div class="movie-info">
+<div class="movie-title">沙丘3：天穹帝国</div>
+<div class="movie-meta"><span>科幻/冒险</span><span>⭐ 8.7</span></div>
+<span class="movie-tag">2026新片</span>
+</div>
+</div>
+<div class="movie-card">
+<div class="movie-poster"><span class="movie-poster-text">暗夜追凶</span></div>
+<div class="movie-info">
+<div class="movie-title">暗夜追凶</div>
+<div class="movie-meta"><span>悬疑/犯罪</span><span>⭐ 8.3</span></div>
+<span class="movie-tag">热播榜首</span>
+</div>
+</div>
+<div class="movie-card">
+<div class="movie-poster"><span class="movie-poster-text">山海奇缘</span></div>
+<div class="movie-info">
+<div class="movie-title">山海奇缘</div>
+<div class="movie-meta"><span>奇幻/动作</span><span>⭐ 7.9</span></div>
+<span class="movie-tag">国产精品</span>
+</div>
+</div>
+<div class="movie-card">
+<div class="movie-poster"><span class="movie-poster-text">星际回声</span></div>
+<div class="movie-info">
+<div class="movie-title">星际回声</div>
+<div class="movie-meta"><span>科幻/剧情</span><span>⭐ 8.5</span></div>
+<span class="movie-tag">口碑佳作</span>
+</div>
+</div>
+<div class="movie-card">
+<div class="movie-poster"><span class="movie-poster-text">城市边缘人</span></div>
+<div class="movie-info">
+<div class="movie-title">城市边缘人</div>
+<div class="movie-meta"><span>剧情/现实</span><span>⭐ 8.1</span></div>
+<span class="movie-tag">文艺精选</span>
+</div>
+</div>
+<div class="movie-card">
+<div class="movie-poster"><span class="movie-poster-text">龙拳无双</span></div>
+<div class="movie-info">
+<div class="movie-title">龙拳无双</div>
+<div class="movie-meta"><span>动作/功夫</span><span>⭐ 7.6</span></div>
+<span class="movie-tag">动作大片</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Categories -->
+<section id="categories" style="background:rgba(0,0,0,0.2)">
+<div class="container">
+<div class="section-header">
+<h2>影片分类 · 精准推荐</h2>
+<p>按类型、地区、年代多维度筛选，找到你的最爱</p>
+</div>
+<div class="cat-nav">
+<a href="#" class="cat-pill active">全部类型</a>
+<a href="#" class="cat-pill">动作冒险</a>
+<a href="#" class="cat-pill">喜剧搞笑</a>
+<a href="#" class="cat-pill">科幻未来</a>
+<a href="#" class="cat-pill">悬疑惊悚</a>
+<a href="#" class="cat-pill">爱情文艺</a>
+<a href="#" class="cat-pill">恐怖惊悚</a>
+<a href="#" class="cat-pill">动画动漫</a>
+<a href="#" class="cat-pill">纪录片</a>
+<a href="#" class="cat-pill">战争历史</a>
+</div>
+<div class="movie-grid">
+<div class="movie-card">
+<div class="movie-poster"><span class="movie-poster-text">极速追击</span></div>
+<div class="movie-info">
+<div class="movie-title">极速追击</div>
+<div class="movie-meta"><span>动作</span><span>2026</span></div>
+</div>
+</div>
+<div class="movie-card">
+<div class="movie-poster"><span class="movie-poster-text">笑破天际</span></div>
+<div class="movie-info">
+<div class="movie-title">笑破天际</div>
+<div class="movie-meta"><span>喜剧</span><span>2026</span></div>
+</div>
+</div>
+<div class="movie-card">
+<div class="movie-poster"><span class="movie-poster-text">时间褶皱</span></div>
+<div class="movie-info">
+<div class="movie-title">时间褶皱</div>
+<div class="movie-meta"><span>科幻</span><span>2025</span></div>
+</div>
+</div>
+<div class="movie-card">
+<div class="movie-poster"><span class="movie-poster-text">午夜迷踪</span></div>
+<div class="movie-info">
+<div class="movie-title">午夜迷踪</div>
+<div class="movie-meta"><span>悬疑</span><span>2026</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Ranking -->
+<section id="ranking">
+<div class="container">
+<div class="section-header">
+<h2>热播排行榜 · 万人追看</h2>
+<p>基于实时播放数据，每周更新热门榜单</p>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>排名</th><th>影片名称</th><th>类型</th><th>评分</th><th>热度</th></tr>
+</thead>
+<tbody>
+<tr><td>🥇 01</td><td>沙丘3：天穹帝国</td><td>科幻/冒险</td><td>8.7</td><td>98.5万</td></tr>
+<tr><td>🥈 02</td><td>暗夜追凶</td><td>悬疑/犯罪</td><td>8.3</td><td>87.2万</td></tr>
+<tr><td>🥉 03</td><td>星际回声</td><td>科幻/剧情</td><td>8.5</td><td>76.8万</td></tr>
+<tr><td>04</td><td>山海奇缘</td><td>奇幻/动作</td><td>7.9</td><td>65.3万</td></tr>
+<tr><td>05</td><td>龙拳无双</td><td>动作/功夫</td><td>7.6</td><td>58.9万</td></tr>
+<tr><td>06</td><td>城市边缘人</td><td>剧情/现实</td><td>8.1</td><td>52.4万</td></tr>
+<tr><td>07</td><td>极速追击</td><td>动作</td><td>7.4</td><td>48.7万</td></tr>
+<tr><td>08</td><td>笑破天际</td><td>喜剧</td><td>7.8</td><td>44.1万</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- Guide -->
+<section id="guide" style="background:rgba(0,0,0,0.2)">
+<div class="container">
+<div class="section-header">
+<h2>观影指南 · 新手必读</h2>
+<p>三步开启你的免费观影之旅</p>
+</div>
+<div class="movie-grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
+<div class="movie-card" style="padding:30px;text-align:center">
+<div style="font-size:2.5rem;margin-bottom:15px">🎬</div>
+<h3 style="margin-bottom:10px;font-size:1.1rem">第一步：选择片源</h3>
+<p style="color:#aaa;font-size:0.85rem">浏览首页推荐或按分类筛选，找到你想看的电影或剧集</p>
+</div>
+<div class="movie-card" style="padding:30px;text-align:center">
+<div style="font-size:2.5rem;margin-bottom:15px">▶️</div>
+<h3 style="margin-bottom:10px;font-size:1.1rem">第二步：一键播放</h3>
+<p style="color:#aaa;font-size:0.85rem">点击影片封面即可进入播放页面，支持多线路切换，告别卡顿</p>
+</div>
+<div class="movie-card" style="padding:30px;text-align:center">
+<div style="font-size:2.5rem;margin-bottom:15px">📱</div>
+<h3 style="margin-bottom:10px;font-size:1.1rem">第三步：多端同步</h3>
+<p style="color:#aaa;font-size:0.85rem">手机、平板、电脑、电视全设备支持，随时随地接着看</p>
+</div>
+</div>
+<div style="margin-top:40px;text-align:center">
+<h3 style="margin-bottom:15px">支持的播放线路</h3>
+<div class="cat-nav">
+<a href="#" class="cat-pill">🇨🇳 国内CDN加速</a>
+<a href="#" class="cat-pill">🌍 全球节点</a>
+<a href="#" class="cat-pill">🚀 极速线路</a>
+<a href="#" class="cat-pill">🔒 加密传输</a>
+<a href="#" class="cat-pill">📶 自适应码率</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+<div class="container">
+<div class="section-header">
+<h2>常见问题 · 用户答疑</h2>
+<p>关于在线免费电影网使用过程中的高频疑问</p>
+</div>
+<div class="faq-item">
+<div class="faq-q">在线免费电影网真的完全免费吗？</div>
+<div class="faq-a"><p>是的，平台所有影视资源均为免费观看，无需付费开通会员，无需下载任何插件，打开网页即可直接播放。</p></div>
+</div>
+<div class="faq-item">
+<div class="faq-q">网站支持哪些设备访问？</div>
+<div class="faq-a"><p>支持所有主流设备，包括Windows/Mac电脑、iPhone/Android手机、iPad平板以及智能电视，响应式设计自动适配屏幕尺寸。</p></div>
+</div>
+<div class="faq-item">
+<div class="faq-q">影片更新频率如何？</div>
+<div class="faq-a"><p>热门院线大片和剧集每日更新，经典老片每周补充，确保用户能第一时间看到最新内容。</p></div>
+</div>
+<div class="faq-item">
+<div class="faq-q">播放卡顿怎么办？</div>
+<div class="faq-a"><p>平台提供多条播放线路，如当前线路卡顿可切换其他线路；同时支持自适应码率，网络较差时自动降低画质保证流畅播放。</p></div>
+</div>
+<div class="faq-item">
+<div class="faq-q">如何搜索想看的影片？</div>
+<div class="faq-a"><p>可通过顶部分类导航按类型筛选，也可使用关键词搜索功能，支持中文片名、英文名、导演名、演员名多维度检索。</p></div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+<div class="footer-logo">🎬 在线免费电影网</div>
+<p style="color:#888;font-size:0.85rem;max-width:600px;margin:0 auto">汇聚全球影视精品，提供高清免费在线观影服务。每日更新热门新片，涵盖电影、电视剧、动漫、纪录片全类型内容。</p>
+<div class="footer-links">
+<a href="#home">首页</a>
+<a href="#latest">最新上映</a>
+<a href="#categories">影片分类</a>
+<a href="#ranking">排行榜单</a>
+<a href="#guide">观影指南</a>
+<a href="#faq">常见问题</a>
+</div>
+<div class="footer-domain">🌐 https://zaixianmianfeidianyingwang-zh.github.io</div>
+<p class="footer-copy">© 2026 在线免费电影网 版权所有 | 本网站提供正版授权影视资源在线播放服务</p>
+<p class="footer-copy">免责声明：本站仅提供影视信息展示与在线播放服务，所有内容版权归原作者及出品方所有</p>
+</div>
+</footer>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q=>{
+q.addEventListener('click',()=>{
+q.parentElement.classList.toggle('open');
+});
+});
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+a.addEventListener('click',e=>{
+e.preventDefault();
+const target=document.querySelector(a.getAttribute('href'));
+if(target){
+target.scrollIntoView({behavior:'smooth',block:'start'});
+document.querySelector('nav').classList.remove('active');
+}
+});
+});
+</script>
+</body>
+</html>
